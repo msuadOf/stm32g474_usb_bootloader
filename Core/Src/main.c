@@ -94,6 +94,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_14);
   while (1)
   {
     /* USER CODE END WHILE */

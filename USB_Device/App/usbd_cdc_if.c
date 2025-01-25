@@ -261,6 +261,12 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+  char s[*Len+1];
+  s[0]=0;
+  strcat(s,">");
+  memcpy(s+1,Buf,*Len);
+  CDC_Transmit_FS(s, *Len+1);//转发数据，做回环测试
+
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
