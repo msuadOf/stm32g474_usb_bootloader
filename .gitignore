@@ -1,3 +1,5 @@
-.mxproject
 build/
+.cache/
 
+.mxproject
+compile_commands*.json
